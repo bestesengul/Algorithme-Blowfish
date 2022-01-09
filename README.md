@@ -1,28 +1,7 @@
 # Algorithme Chiffrement de Blowfish
 
-![Shape7](RackMultipart20220109-4-17tvg83_html_e8a0ac67e0e7363d.gif)
 
-_### **INF 224** _
-
-_### **Algorithmique et Structures de Données** _
-
-#
-**_## Chiffrement des Messages avec l&#39;Algorithme Blowfish Rapport de Projet_**
-
-#### **Génie Informatique**
-
-#### **Université Galatasaray**
-
-#### **Janvier 9, 2021**
-
-####
-#### Beste ŞENGÜL
-
-#### 19401851
-
-####
-####
-### Tableau de Contenu
+## Tableau de Contenu
 
 [Tableau de Contenu 2](#_Toc92625930)
 
@@ -100,7 +79,7 @@ Le chiffrement désigne la conversion des données depuis un format lisible dans
 
 Les deux types principaux des algorithmes de chiffrement sont le cryptage symétrique et asymétrique. Le chiffrement symétrique est un système de chiffrement qui utilise la même clé secrète pour le chiffrement et le déchiffrement. C&#39;est un chiffrement qui est particulièrement utile pour chiffrer de grandes quantités de données. En effet, il est très rapide et consomme peu de ressources.
 
-![Shape1](RackMultipart20220109-4-17tvg83_html_bd3a18c9cc93c77e.gif)
+![Resim1](https://user-images.githubusercontent.com/83185578/148678231-0e53a23b-4ab4-4716-b191-15cc2a513464.png)
 
 Les deux types de briques de base de chiffrement symétrique : le chiffrement de flux (chiffrement par flot) et le chiffrement par bloc. Le chiffrement de flux est basé sur le principe du One-Time Pad, c&#39;est-à-dire l&#39;opération bit à bit XOR. Le chiffrement de bloc est la catégorie la plus utilisée aujourd&#39;hui. Ce chiffrement consiste à découper un message en blocs de taille fixe, généralement de 128 bits. Chaque bloc est chiffré avec la clé secrète et une fonction de chiffrement de bloc interne, ce qui donne un bloc chiffré de la même taille. On regroupe ensuite tous les blocs pour former le texte chiffré.
 
@@ -112,11 +91,9 @@ Puisque je lance mon projet sur GitHub, j&#39;utilise la technologie Git dans la
 
 #### Notion de Algorithme de Chiffrement Blowfish
 
-![](RackMultipart20220109-4-17tvg83_html_5559cc4d12ccdac5.png) ![Shape2](RackMultipart20220109-4-17tvg83_html_50333355f1ac8fdf.gif)
-
-**Dessin\_2 : Algorithme de chiffrement Blowfish**
-
 En 1983, Bruice Schneier a développé un algorithme comme alternative à vieillissement DES et IDEA à savoir Blowfish. C&#39;est une clé symétrique chiffrement par bloc. Blowfish a une taille de bloc de 64 bits et une clé variable longueur de 32 bits à 448 bits. C&#39;est un Feistel de 16 coups chiffrement et utilise de grandes boîtes S dépendant de la clé. Le poisson-globe est connu pour être sensible aux attaques sur les touches réfléchissantes faibles. Blowfish est dans le domaine public, c&#39;est-à-dire qu&#39;il est sans licence et s&#39;ouvre pour tout le monde. Blowfish divise l&#39;entrée 64 bits en deux moitiés chacune de 32 bits, puis selon la structure de Feistel, le texte chiffré sera être produit à partir de texte brut.
+
+![Resim2](https://user-images.githubusercontent.com/83185578/148678269-1a3aa9fc-96c6-4ff7-b340-3f9817c9c020.png)
 
 #### Applications du Monde Réel de Blowfish
 
@@ -146,27 +123,25 @@ Secure Shell est utilisé pour accéder à distance aux réseaux informatiques t
 
 ### Structure de Code
 
-De premier lieu, j&#39;ai lu les articles de Bruce Schneier et observé les implémentations différentes de l&#39;algorithme de Blowfish [sur son site d&#39;Internet](https://www.schneier.com/academic/blowfish/). J&#39;ai m&#39;inspiré à l&#39;implémentation de Paul Kocher (qui est publié en 1997) quand j&#39;ai des problèmes liés au chiffrement. Dans le fichier de source blowfish.c, il y a la fonction d&#39;initialisation, la fonction de hachage, la fonction d&#39;chiffrement et la fonction de déchiffrement. Le fichier d&#39;en-tête blowfish.h contient les définitions des fonctions et de la structure. La fonction de main() se trouve dans le ficher de teste main.c qui contient une application de teste et une application du monde réel qui chiffre et déchiffre un jeu de donnée nettoyé des messages en les écrivant sur les fichier \*.txt différents pour montrer le chiffrement et le déchiffrement.
+De premier lieu, j'ai lu les articles de Bruce Schneier et observé les implémentations différentes de l'algorithme de Blowfish [sur son site d&#39;Internet](https://www.schneier.com/academic/blowfish/). Je me suis inspirée à l'implémentation de Paul Kocher (qui est publié en 1997) quand j&#39;ai des problèmes liés au chiffrement. Dans le fichier de source blowfish.c, il y a la fonction d'initialisation, la fonction de hachage, la fonction déchiffrement et la fonction de déchiffrement. Le fichier d'en-tête blowfish.h contient les définitions des fonctions et de la structure. La fonction de main() se trouve dans le ficher de teste main.c qui contient une application de teste et une application du monde réel qui chiffre et déchiffre un jeu de donnée nettoyé des messages en les écrivant sur les fichier \*.txt différents pour montrer le chiffrement et le déchiffrement.
 
 ### Processus de débogage
 
-![Shape3](RackMultipart20220109-4-17tvg83_html_96da041328d39aad.gif)
- Au cours du processus de programmation, des erreurs de mémoire ont été rencontrées assez souvent. Ceci est difficile à remarquer car le processus de compilation est effectué avec la commande ./main sur le terminal. La présence d&#39;erreurs est détectée par l&#39;outil de programmation appelé Valgrind, qui est utilisé pour détecter les erreurs de mémoire et les fuites. Dans le processus de débogage, les résultats créés par Valgrind ont été examinés en détail et des recherches approfondies ont été menées sur Internet. En faisant cela, la racine des erreurs a été atteinte.
+Au cours du processus de programmation, des erreurs de mémoire ont été rencontrées assez souvent. Ceci est difficile à remarquer car le processus de compilation est effectué avec la commande `./main` sur le terminal. La présence d&#39;erreurs est détectée par l'outil de programmation appelé Valgrind, qui est utilisé pour détecter les erreurs de mémoire et les fuites. Dans le processus de débogage, les résultats créés par Valgrind ont été examinés en détail et des recherches approfondies ont été menées sur Internet. En faisant cela, la racine des erreurs a été atteinte.
 
 #### _Première Partie : La Nettoyage des Données_
 
-### Système de Fichier &amp; Coup d&#39;œil à Jeu de Données
+### Système de Fichier & Coup d'oeuil à Jeu de Données
 
 Tous les fichiers de code, le jeu de donnée de messages et tous les fichiers de \*.txt qui seront créés se trouvent dans le dossier src.
 
-Dans le jeu de données, il y a une mille messages nettoyés et ces messages sont stockés dans un fichier appelé messages.txt. Le ligne le plus longue vaut 386 charactères, c&#39;est pourquoi on a utilisé une liste appelée tmp de taille 500 bits (charactères).
+Dans le jeu de données, il y a une mille messages nettoyés et ces messages sont stockés dans un fichier appelé messages.txt. Le ligne le plus longue vaut 386 charactères, c'est pourquoi on a utilisé une liste appelée tmp de taille 500 bits (charactères).
 
-J&#39;ai nettoyé les données pour supprimer les caractères non-ASCIIs et alphanumériques.
+J'ai nettoyé les données pour supprimer les caractères non-ASCIIs et alphanumériques.
 
-### Compilation du programme &amp; Interface Utilisateur
+### Compilation du programme & Interface Utilisateur
 
-![Shape4](RackMultipart20220109-4-17tvg83_html_16ae0b1ce58ba6c4.gif)
-L&#39;utilisateur doit d&#39;abord compiler le programme sur un système d&#39;exploitation basé sur Linux en en tapant la commande suivante dans le terminal : gcc blowfish.c blowfish.h main.c -o main. Ensuite, l&#39;utilisateur doit appeler le fichier exécutable pour exécuter le programme : ./main.
+L'utilisateur doit d&#39;abord compiler le programme sur un système d&#39;exploitation basé sur Linux en en tapant la commande suivante dans le terminal : gcc blowfish.c blowfish.h main.c -o main. Ensuite, l&#39;utilisateur doit appeler le fichier exécutable pour exécuter le programme : ./main.
 
 L&#39;exécution du programme donne le fichier messages-cryptes.txt et le fichier messages-decryptes.txt dans le dossier src.
 
@@ -222,15 +197,6 @@ Dans la section [Chiffrement](#_Deuxi%C3%A8me_Partie_:), j&#39;ai ;
 - Implémenté l&#39;algorithme de cryptage Blowfish.
 - Créé une application de chiffrement de message.
 - Utilisé un jeu de donnée pour tester mon application.
-
-#### Améliorations de Algorithme de Chiffrement
-
-![Shape9](RackMultipart20220109-4-17tvg83_html_72483813ebf3dd.gif)
-On peut utiliser un autre algorithme de cryptage comme Twofish, DES, 3DES, AES, RSA, etc. pour améliorer la rapidité de chiffrement ou la sécurité du message. On va comparer les algorithmes de chiffrement pour le choix de l&#39;algorithme en termes de la durée de chiffrement, la durée de déchiffrement et l&#39;usage de mémoire.
-
-![Shape10](RackMultipart20220109-4-17tvg83_html_2e67294ab3124347.gif)D&#39;après le dessin 4, l&#39;algorithme Blowfish enregistre la durée de cryptage le plus rapide et l&#39;algorithme RSA enregistre la durée de cryptage le plus lent. Quant à la durée de décryptage pour tous les algorithmes est plus rapide que le temps de cryptage. De plus, l&#39;algorithme Blowfish enregistre la durée de déchiffrement le plus rapide et l&#39;algorithme RSA enregistre la durée de déchiffrement le plus lent.
-
-![Shape11](RackMultipart20220109-4-17tvg83_html_53ac5e49236f72c4.gif)
 
 ## _Ressources_
 
