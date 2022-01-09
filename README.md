@@ -1,1 +1,253 @@
-# Algorithme-Blowfish
+# Algorithme Chiffrement de Blowfish
+
+![Shape7](RackMultipart20220109-4-17tvg83_html_e8a0ac67e0e7363d.gif)
+
+_### **INF 224** _
+
+_### **Algorithmique et Structures de Données** _
+
+#
+**_## Chiffrement des Messages avec l&#39;Algorithme Blowfish Rapport de Projet_**
+
+#### **Génie Informatique**
+
+#### **Université Galatasaray**
+
+#### **Janvier 9, 2021**
+
+####
+#### Beste ŞENGÜL
+
+#### 19401851
+
+####
+####
+### Tableau de Contenu
+
+[Tableau de Contenu 2](#_Toc92625930)
+
+[Introduction 3](#_Toc92625931)
+
+[But de Projet 3](#_Toc92625932)
+
+[Cryptage des Données 3](#_Toc92625933)
+
+[Technologies Utilisées 4](#_Toc92625934)
+
+[Algorithme Blowfish 4](#_Toc92625935)
+
+[Notion de Algorithme de Chiffrement Blowfish 4](#_Toc92625936)
+
+[Applications du Monde Réel de Blowfish 5](#_Toc92625937)
+
+[Gestion des mots de passe 5](#_Toc92625938)
+
+[Cryptage de fichiers/disques 5](#_Toc92625939)
+
+[Outils de sauvegarde 5](#_Toc92625940)
+
+[Cryptage des courriels 5](#_Toc92625941)
+
+[Secure Shell (SSH) 5](#_Toc92625942)
+
+[Architecture du Project 6](#_Toc92625943)
+
+[Processus du Projet 6](#_Toc92625944)
+
+[Structure de Code 6](#_Toc92625945)
+
+[Processus de débogage 6](#_Toc92625946)
+
+[Première Partie : La Nettoyage des Données 7](#_Toc92625947)
+
+[Système de Fichier &amp; Coup d&#39;œil à Jeu de Données 7](#_Toc92625948)
+
+[Compilation du programme &amp; Interface Utilisateur 7](#_Toc92625949)
+
+[Deuxième Partie : Le Chiffrement &amp; Application de Chiffrement de Message 8](#_Toc92625950)
+
+[Structure Employée 8](#_Toc92625951)
+
+[Fonctions (BLOWFISH.H) 8](#_Toc92625952)
+
+[Résultats 9](#_Toc92625953)
+
+[Cryptanalyse du Blowfish 9](#_Toc92625954)
+
+[Efficacité du Blowfish 9](#_Toc92625955)
+
+[Conclusion &amp; Travaux Futur 9](#_Toc92625956)
+
+[Améliorations de Algorithme de Chiffrement 10](#_Toc92625957)
+
+[Ressources 11](#_Toc92625958)
+
+## _Introduction_
+
+#### But de Projet
+
+- Définir le cryptage des données,
+- Analyser l&#39;algorithme de chiffrement Blowfish techniquement et historiquement
+- Observer ses applications du monde réel,
+- Etudier sa cryptanalyse,
+- Examiner son efficacité en le comparant avec les autres algorithmes de chiffrement,
+- Mettre en œuvre l&#39;une de ses applications du monde réel – chiffrement de message
+- Discuter ses améliorations et ses travaux futur
+
+#### Cryptage des Données
+
+Le chiffrement désigne la conversion des données depuis un format lisible dans un format codé. Cela nous aide à ainsi traiter et stocker des données en toute sécurité en préservant leur confidentialité et intégrité et échanger sans risque des clés et du texte crypté dans des messages. Puisque le chiffrement est le moyen le plus simple et le plus efficace de s&#39;assurer que les informations du système informatique ne peuvent être ni volées ni lues par quelqu&#39;un qui souhaite les utiliser à des fins malveillantes, cela port une importance cruciale de la sécurité des données. Le cryptage des données nous assure la confidentialité, l&#39;intégrité et l&#39;authenticité du contenue (texte, message, etc.).
+
+Les deux types principaux des algorithmes de chiffrement sont le cryptage symétrique et asymétrique. Le chiffrement symétrique est un système de chiffrement qui utilise la même clé secrète pour le chiffrement et le déchiffrement. C&#39;est un chiffrement qui est particulièrement utile pour chiffrer de grandes quantités de données. En effet, il est très rapide et consomme peu de ressources.
+
+![Shape1](RackMultipart20220109-4-17tvg83_html_bd3a18c9cc93c77e.gif)
+
+Les deux types de briques de base de chiffrement symétrique : le chiffrement de flux (chiffrement par flot) et le chiffrement par bloc. Le chiffrement de flux est basé sur le principe du One-Time Pad, c&#39;est-à-dire l&#39;opération bit à bit XOR. Le chiffrement de bloc est la catégorie la plus utilisée aujourd&#39;hui. Ce chiffrement consiste à découper un message en blocs de taille fixe, généralement de 128 bits. Chaque bloc est chiffré avec la clé secrète et une fonction de chiffrement de bloc interne, ce qui donne un bloc chiffré de la même taille. On regroupe ensuite tous les blocs pour former le texte chiffré.
+
+#### Technologies Utilisées
+
+Puisque je lance mon projet sur GitHub, j&#39;utilise la technologie Git dans la gestion de projet et la révision de code. J&#39;ai profité de l&#39;éditeur de texte Sublime Text et Code::Bloks IDE pour écrire du code. De plus, j&#39;ai utilisé Valgrind, Code::Bloks et GDB (GNU débogueur) pour les vérifications de bogues et d&#39;optimisation de code.
+
+## _Algorithme Blowfish_
+
+#### Notion de Algorithme de Chiffrement Blowfish
+
+![](RackMultipart20220109-4-17tvg83_html_5559cc4d12ccdac5.png) ![Shape2](RackMultipart20220109-4-17tvg83_html_50333355f1ac8fdf.gif)
+
+**Dessin\_2 : Algorithme de chiffrement Blowfish**
+
+En 1983, Bruice Schneier a développé un algorithme comme alternative à vieillissement DES et IDEA à savoir Blowfish. C&#39;est une clé symétrique chiffrement par bloc. Blowfish a une taille de bloc de 64 bits et une clé variable longueur de 32 bits à 448 bits. C&#39;est un Feistel de 16 coups chiffrement et utilise de grandes boîtes S dépendant de la clé. Le poisson-globe est connu pour être sensible aux attaques sur les touches réfléchissantes faibles. Blowfish est dans le domaine public, c&#39;est-à-dire qu&#39;il est sans licence et s&#39;ouvre pour tout le monde. Blowfish divise l&#39;entrée 64 bits en deux moitiés chacune de 32 bits, puis selon la structure de Feistel, le texte chiffré sera être produit à partir de texte brut.
+
+#### Applications du Monde Réel de Blowfish
+
+### Gestion des mots de passe
+
+Les logiciels et systèmes de gestion des mots de passe protègent et créent des mots de passe. Blowfish a été utilisé dans une variété d&#39;outils de gestion de mots de passe pour créer des mots de passe et crypter les mots de passe enregistrés. Voici des exemples d&#39;outils de gestion de mots de passe utilisant Blowfish : Gestionnaire d&#39;accès, Java PasswordSafe, Web confidentiel
+
+**Cryptage de fichiers/disques**
+
+Les logiciels qui cryptent les fichiers ou les disques sont extrêmement courants aujourd&#39;hui, car de nombreuses organisations ont des données sensibles dont elles ont besoin pour assurer la sécurité. Ce logiciel doit être simple à utiliser par les entreprises et rapide pour terminer le processus de cryptage. Ainsi, Blowfish est utilisé dans ces systèmes de cryptage souvent dans des produits tels que GnuPG, Bcrypt, CryptoForge
+
+### Outils de sauvegarde
+
+Les logiciels qui sauvegardent l&#39;infrastructure vitale d&#39;une organisation doivent avoir la capacité de chiffrer les informations contenues dans ces sauvegardes. C&#39;est dans le cas où la sauvegarde contient des informations sensibles. Les systèmes de sauvegarde qui utilisent Blowfish sont Symantec NetBackup et Sauvegarde pour les groupes de travail.
+
+**Cryptage des courriels**
+
+Le cryptage des courriels est extrêmement important sur n&#39;importe quel appareil. Différents logiciels IOS, Linux et Windows utilisent tous Blowfish pour le cryptage des courriels. Pour illustrer, on peut donner quelques exemples : A-Lock, SecuMail.
+
+**Secure Shell (SSH)**
+
+Secure Shell est utilisé pour accéder à distance aux réseaux informatiques tout en authentifiant l&#39;utilisateur grâce à l&#39;utilisation de méthodes de cryptage comme Blowfish. Exemples : OpenSSH, PuTTY
+
+## _Architecture du Project_
+
+#### Processus du Projet
+
+### Structure de Code
+
+De premier lieu, j&#39;ai lu les articles de Bruce Schneier et observé les implémentations différentes de l&#39;algorithme de Blowfish [sur son site d&#39;Internet](https://www.schneier.com/academic/blowfish/). J&#39;ai m&#39;inspiré à l&#39;implémentation de Paul Kocher (qui est publié en 1997) quand j&#39;ai des problèmes liés au chiffrement. Dans le fichier de source blowfish.c, il y a la fonction d&#39;initialisation, la fonction de hachage, la fonction d&#39;chiffrement et la fonction de déchiffrement. Le fichier d&#39;en-tête blowfish.h contient les définitions des fonctions et de la structure. La fonction de main() se trouve dans le ficher de teste main.c qui contient une application de teste et une application du monde réel qui chiffre et déchiffre un jeu de donnée nettoyé des messages en les écrivant sur les fichier \*.txt différents pour montrer le chiffrement et le déchiffrement.
+
+### Processus de débogage
+
+![Shape3](RackMultipart20220109-4-17tvg83_html_96da041328d39aad.gif)
+ Au cours du processus de programmation, des erreurs de mémoire ont été rencontrées assez souvent. Ceci est difficile à remarquer car le processus de compilation est effectué avec la commande ./main sur le terminal. La présence d&#39;erreurs est détectée par l&#39;outil de programmation appelé Valgrind, qui est utilisé pour détecter les erreurs de mémoire et les fuites. Dans le processus de débogage, les résultats créés par Valgrind ont été examinés en détail et des recherches approfondies ont été menées sur Internet. En faisant cela, la racine des erreurs a été atteinte.
+
+#### _Première Partie : La Nettoyage des Données_
+
+### Système de Fichier &amp; Coup d&#39;œil à Jeu de Données
+
+Tous les fichiers de code, le jeu de donnée de messages et tous les fichiers de \*.txt qui seront créés se trouvent dans le dossier src.
+
+Dans le jeu de données, il y a une mille messages nettoyés et ces messages sont stockés dans un fichier appelé messages.txt. Le ligne le plus longue vaut 386 charactères, c&#39;est pourquoi on a utilisé une liste appelée tmp de taille 500 bits (charactères).
+
+J&#39;ai nettoyé les données pour supprimer les caractères non-ASCIIs et alphanumériques.
+
+### Compilation du programme &amp; Interface Utilisateur
+
+![Shape4](RackMultipart20220109-4-17tvg83_html_16ae0b1ce58ba6c4.gif)
+L&#39;utilisateur doit d&#39;abord compiler le programme sur un système d&#39;exploitation basé sur Linux en en tapant la commande suivante dans le terminal : gcc blowfish.c blowfish.h main.c -o main. Ensuite, l&#39;utilisateur doit appeler le fichier exécutable pour exécuter le programme : ./main.
+
+L&#39;exécution du programme donne le fichier messages-cryptes.txt et le fichier messages-decryptes.txt dans le dossier src.
+
+#### _Deuxième Partie : Le Chiffrement &amp; Application de Chiffrement de Message_
+
+### Structure Employée
+
+![Shape8](RackMultipart20220109-4-17tvg83_html_34d31163ab2d7e19.gif)
+
+typedef struct{
+
+uint32\_tP[16 + 2];
+
+uint32\_tS[4][256];
+
+} BLOWFISH\_CTX;
+
+### Fonctions (BLOWFISH.H)
+
+- unsigned long F(BLOWFISH\_CTX \*ctx, uint32\_t x)
+
+Cette fonction faire une combinaison des pièces quartet de la partie gauche du message (ou bien la partie gauche du texte dans la boucle actuelle) et boîtes S.
+
+- void Blowfish\_Init(BLOWFISH\_CTX \*ctx, uint16\_t \*key, int KeyLen)
+
+Cette fonction initialise le chiffrement en faisant les ajustements nécessaires.
+
+- void Blowfish\_Encrypt(BLOWFISH\_CTX \*ctx, uint32\_t \*xl, uint32\_t \*xr)
+- void Blowfish\_Decrypt (BLOWFISH\_CTX \*ctx, uint32\_t \*xl, uint32\_t \*xr)
+
+## _Résultats_
+
+#### Cryptanalyse du Blowfish
+
+En 1996, Serge Vaudenay a montré que les permutations dans Blowfish s&#39;écartaient sensiblement des permutations complètement aléatoires sur 14 tours. L&#39;attaque qu&#39;il a forgée nécessite 28r + 1 textes clairs connus, avec r le nombre de tours. Il a de plus mis en évidence des clés dites faibles, qui génèrent des boîtes S comportant des collisions. Ces clés sont détectables et cassables avec la même attaque en seulement 24r + 1 textes clairs connus. L&#39;attaque ne peut être étendue au Blowfish complet avec ses 16 tours. Vincent Rijmen a publié une attaque sur quatre tours en 1997, elle est basée sur une cryptanalyse différentielle de second degré. La recherche exhaustive reste la seule solution pour vaincre un Blowfish complet à ce jour.
+# 1
+
+#### Efficacité du Blowfish
+
+L&#39;algorithme Blowfish a beaucoup d&#39;avantages. Blowfish est plus rapide que d&#39;autres algorithmes de cryptage, tels que le Data Encryption Standard (DES). Il a également moins d&#39;opérations à effectuer par rapport aux autres algorithmes de chiffrement. Le calendrier clé de Blowfish prend beaucoup de temps, mais cela peut être avantageux, car les attaques par force brute sont plus difficiles De plus, Blowfish n&#39;est pas breveté et est libre d&#39;utilisation. Cela signifie que n&#39;importe qui peut prendre et utiliser Blowfish pour ce qu&#39;il veut.
+
+Blowfish donne plusieurs avantages pourtant le calendrier des clés de Blowfish prend beaucoup de temps, équivalent à crypter 4 KBs de données, ce qui peut être un inconvénient ou un avantage. Il faut beaucoup de temps pour faire. Le deuxième inconvénient, la petite taille de bloc de Blowfish signifie que des Attaques des Anniversaire peuvent se produire et compromettre l&#39;algorithme de cryptage. De plus, il est suivi de Twofish, qui a été créé pour remplacer Blowfish, car Twofish est meilleur à bien des égards.
+
+#### Conclusion &amp; Travaux Futur
+
+Un programme dédié à fonctionner de la manière la plus efficace dans tous les processus du projet et capable de crypter le jeu de données de message d&#39;échantillon a été créé à l&#39;aide de l&#39;implémentation l&#39;algorithme Blowfish en C. Dans la section [Nettoyage des Données](#_Premi%C3%A8re_Partie_:), qui est l&#39;une des deux parties principales du programme, j&#39;ai ;
+
+- Supprimé les caractères inutiles et qui peut entrainer une erreur de compilation.
+- Les stocké dans un fichier de texte.
+
+Dans la section [Chiffrement](#_Deuxi%C3%A8me_Partie_:), j&#39;ai ;
+
+- Implémenté l&#39;algorithme de cryptage Blowfish.
+- Créé une application de chiffrement de message.
+- Utilisé un jeu de donnée pour tester mon application.
+
+#### Améliorations de Algorithme de Chiffrement
+
+![Shape9](RackMultipart20220109-4-17tvg83_html_72483813ebf3dd.gif)
+On peut utiliser un autre algorithme de cryptage comme Twofish, DES, 3DES, AES, RSA, etc. pour améliorer la rapidité de chiffrement ou la sécurité du message. On va comparer les algorithmes de chiffrement pour le choix de l&#39;algorithme en termes de la durée de chiffrement, la durée de déchiffrement et l&#39;usage de mémoire.
+
+![Shape10](RackMultipart20220109-4-17tvg83_html_2e67294ab3124347.gif)D&#39;après le dessin 4, l&#39;algorithme Blowfish enregistre la durée de cryptage le plus rapide et l&#39;algorithme RSA enregistre la durée de cryptage le plus lent. Quant à la durée de décryptage pour tous les algorithmes est plus rapide que le temps de cryptage. De plus, l&#39;algorithme Blowfish enregistre la durée de déchiffrement le plus rapide et l&#39;algorithme RSA enregistre la durée de déchiffrement le plus lent.
+
+![Shape11](RackMultipart20220109-4-17tvg83_html_53ac5e49236f72c4.gif)
+
+## _Ressources_
+
+1. [https://www.kaspersky.fr/resource-center/definitions/encryption](https://www.kaspersky.fr/resource-center/definitions/encryption)
+2. [https://www.itpro.fr/qu-est-ce-que-cryptage-donnees/](https://www.itpro.fr/qu-est-ce-que-cryptage-donnees/)
+3. [https://www.cnil.fr/en/node/23022](https://www.cnil.fr/en/node/23022)
+4. [https://web.maths.unsw.edu.au/~lafaye/CCM/crypto/crypto.htm](https://web.maths.unsw.edu.au/~lafaye/CCM/crypto/crypto.htm)
+5. [https://berty.tech/blog/cryptography-daily-usage](https://berty.tech/blog/cryptography-daily-usage)
+6. [https://www.schneier.com/academic/blowfish/](https://www.schneier.com/academic/blowfish/)
+7. By Gid.vn - Own work, CC BY-SA 4.0, [https://commons.wikimedia.org/w/index.php?curid=46009111](https://commons.wikimedia.org/w/index.php?curid=46009111)
+8. [https://www.encryptionconsulting.com/education-center/what-is-blowfish/](https://www.encryptionconsulting.com/education-center/what-is-blowfish/)
+9. [https://fr.wikipedia.org/wiki/Blowfish](https://fr.wikipedia.org/wiki/Blowfish)
+10. Rane, D. D. (2016). Superiority of Twofish over Blowfish_. International Journal of Scientific Research and Management_. [https://doi.org/10.18535/ijsrm/v4i11.01](https://doi.org/10.18535/ijsrm/v4i11.01)
+11. **Jeu de Données :** [http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/](http://www.dt.fee.unicamp.br/~tiago/smsspamcollection/)
+12. **Nettoyage des Données :**
+  1. [https://pteo.paranoiaworks.mobi/diacriticsremover/](https://pteo.paranoiaworks.mobi/diacriticsremover/)
+  2. [http://www.text-filter.com/Remove-Delete-Non-Alphanumeric-Characters-From-Text-Excel-Online.htm](http://www.text-filter.com/Remove-Delete-Non-Alphanumeric-Characters-From-Text-Excel-Online.htm)
+13. [https://symbiosisonlinepublishing.com/computer-science-technology/computerscience-information-technology32.php](https://symbiosisonlinepublishing.com/computer-science-technology/computerscience-information-technology32.php)
+
+[1](#sdfootnote1anc)[https://fr.wikipedia.org/wiki/Blowfish](https://fr.wikipedia.org/wiki/Blowfish)
