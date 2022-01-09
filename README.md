@@ -3,55 +3,53 @@
 
 ## Tableau de Contenu
 
-- [Tableau de Contenu](#_Toc92625930)
+- [Introduction](#introduction)
 
-- [Introduction](#_Toc92625931)
+  - [But de Projet](#but-de-projet)
 
-  - [But de Projet](#_Toc92625932)
+  - [Cryptage des Données](#cryptage-des-données)
 
-  - [Cryptage des Données](#_Toc92625933)
+  - [Technologies Utilisées](#technologies-utilisées)
 
-  - [Technologies Utilisées](#_Toc92625934)
+- [Algorithme Blowfish](#algorithme-blowfish)
 
-- [Algorithme Blowfish](#_Toc92625935)
+  - [Notion de Algorithme de Chiffrement Blowfish](#notion-de-algorithme-de-chiffrement-blowfish)
 
-  - [Notion de Algorithme de Chiffrement Blowfish](#_Toc92625936)
+  - [Applications du Monde Réel de Blowfish](#applicaitons-du-monde-réel-de-blowfish)
 
-  - [Applications du Monde Réel de Blowfish](#_Toc92625937)
+    - [Gestion des mots de passe](#gestion-des-mots-de-passe)
 
-    - [Gestion des mots de passe](#_Toc92625938)
+    - [Cryptage de fichiers/disques](#cryptage-de-fichiers/disques)
 
-    - [Cryptage de fichiers/disques](#_Toc92625939)
+    - [Outils de sauvegarde](#outils-de-sauvegarde)
 
-    - [Outils de sauvegarde](#_Toc92625940)
+    - [Cryptage des courriels](#cryptage-des-courriels)
 
-    - [Cryptage des courriels](#_Toc92625941)
+    - [Secure Shell (SSH)](#secure-shell-(ssh))
 
-    - [Secure Shell (SSH)](#_Toc92625942)
+    - [Architecture du Project](#architecture-du-projet)
 
-    - [Architecture du Project](#_Toc92625943)
+- [Processus du Projet](#processus-du-projet)
 
-- [Processus du Projet](#_Toc92625944)
+  - [Structure de Code](#structure-de-code)
 
-  - [Structure de Code](#_Toc92625945)
+  - [Processus de débogage](#processus-de-débogage)
 
-  - [Processus de débogage](#_Toc92625946)
+  - [Première Partie : La Nettoyage des Données](#première-partie-:-la-nettoyage-des-données)
 
-  - [Première Partie : La Nettoyage des Données](#_Toc92625947)
+    - [Système de Fichier &amp; Coup d&#39;œil à Jeu de Données](#système-de-fichier-&amp;-Coupd&#39;œil-à-jeu-de-données)
 
-    - [Système de Fichier &amp; Coup d&#39;œil à Jeu de Données](#_Toc92625948)
+    - [Compilation du programme &amp; Interface Utilisateur](#compilation-du-programme-&amp;-interface-utilisateur)
 
-    - [Compilation du programme &amp; Interface Utilisateur](#_Toc92625949)
+  - [Deuxième Partie : Le Chiffrement &amp; Application de Chiffrement de Message](#deuxième-partie-:-le-chiffrement-&amp;-application-de-chiffrement-de-message)
 
-  - [Deuxième Partie : Le Chiffrement &amp; Application de Chiffrement de Message](#_Toc92625950)
+    - [Structure Employée](#structure-employée)
 
-    - [Structure Employée](#_Toc92625951)
+    - [Fonctions (BLOWFISH.H)](#fonctions-(blowfish.h))
 
-    - [Fonctions (BLOWFISH.H)](#_Toc92625952)
+- [Résultats](#résultats)
 
-- [Résultats](#_Toc92625953)
-
-  - [Cryptanalyse du Blowfish](#_Toc92625954)
+  - [Cryptanalyse du Blowfish](#cryptanalyse-du-blowfish)
 
   - [Efficacité du Blowfish](#efficacité-du-blowfish)
 
@@ -218,6 +216,8 @@ Selon le dessin, la mémoire utilisée pour les opérations unitaires pour toute
 ![Resim3](https://user-images.githubusercontent.com/83185578/148693224-fbec173d-ebf0-457c-841e-aa4730e3869a.png)
 
 Quant au dessin 6, les comparaisons de temps entre Twofish et Blowfish nous montrent que Twofish prend moins de temps pour crypter le document que Blowfish.
+
+- [Tableau de Contenu](#tableau-de-contenu)
 
 ## _Ressources_
 
