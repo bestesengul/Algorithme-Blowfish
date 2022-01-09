@@ -53,13 +53,13 @@
 
   - [Cryptanalyse du Blowfish](#_Toc92625954)
 
-  - [Efficacité du Blowfish](#_Toc92625955)
+  - [Efficacité du Blowfish](#efficacité-du-blowfish)
 
-  - [Conclusion &amp; Travaux Futur](#_Toc92625956)
+  - [Conclusion &amp; Travaux Futur](#Conclusion-&amp;-Travaux-Futur)
 
-  - [Améliorations de Algorithme de Chiffrement](#_Toc92625957)
+  - [Améliorations de Algorithme de Chiffrement](#améliorations-de-algorithme-de-chiffrement)
 
-- [Ressources](#_Toc92625958)
+- [Ressources](#ressources)
 
 ## _Introduction_
 
@@ -183,7 +183,6 @@ void Blowfis\_Decrypt (BLOWFIS\_CTX *ctx, uint32_t *xl, uint32_t *xr)
 #### Cryptanalyse du Blowfish
 
 En 1996, Serge Vaudenay a montré que les permutations dans Blowfish s&#39;écartaient sensiblement des permutations complètement aléatoires sur 14 tours. L&#39;attaque qu&#39;il a forgée nécessite 28r + 1 textes clairs connus, avec r le nombre de tours. Il a de plus mis en évidence des clés dites faibles, qui génèrent des boîtes S comportant des collisions. Ces clés sont détectables et cassables avec la même attaque en seulement 24r + 1 textes clairs connus. L&#39;attaque ne peut être étendue au Blowfish complet avec ses 16 tours. Vincent Rijmen a publié une attaque sur quatre tours en 1997, elle est basée sur une cryptanalyse différentielle de second degré. La recherche exhaustive reste la seule solution pour vaincre un Blowfish complet à ce jour.
-# 1
 
 #### Efficacité du Blowfish
 
