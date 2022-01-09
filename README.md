@@ -149,8 +149,7 @@ L&#39;exécution du programme donne le fichier messages-cryptes.txt et le fichie
 
 ### Structure Employée
 
-![Shape8](RackMultipart20220109-4-17tvg83_html_34d31163ab2d7e19.gif)
-
+```
 typedef struct{
 
 uint32\_tP[16 + 2];
@@ -158,20 +157,27 @@ uint32\_tP[16 + 2];
 uint32\_tS[4][256];
 
 } BLOWFISH\_CTX;
+```
 
 ### Fonctions (BLOWFISH.H)
-
-- unsigned long F(BLOWFISH\_CTX \*ctx, uint32\_t x)
-
+```
+unsigned long F(BLOWFISH\_CTX \*ctx, uint32\_t x)
+```
+```
 Cette fonction faire une combinaison des pièces quartet de la partie gauche du message (ou bien la partie gauche du texte dans la boucle actuelle) et boîtes S.
-
-- void Blowfish\_Init(BLOWFISH\_CTX \*ctx, uint16\_t \*key, int KeyLen)
-
+```
+```
+void Blowfish_Init(BLOWFISH_CTX *ctx, uint16_t *key, int KeyLen)
+```
+```
 Cette fonction initialise le chiffrement en faisant les ajustements nécessaires.
-
-- void Blowfish\_Encrypt(BLOWFISH\_CTX \*ctx, uint32\_t \*xl, uint32\_t \*xr)
-- void Blowfish\_Decrypt (BLOWFISH\_CTX \*ctx, uint32\_t \*xl, uint32\_t \*xr)
-
+```
+```
+void Blowfish_Encrypt(BLOWFISH_CTX *ctx, uint32_t *xl, uint32_t *xr)
+```
+```
+void Blowfis\_Decrypt (BLOWFIS\_CTX *ctx, uint32_t *xl, uint32_t *xr)
+```
 ## _Résultats_
 
 #### Cryptanalyse du Blowfish
@@ -197,6 +203,22 @@ Dans la section [Chiffrement](#_Deuxi%C3%A8me_Partie_:), j&#39;ai ;
 - Implémenté l&#39;algorithme de cryptage Blowfish.
 - Créé une application de chiffrement de message.
 - Utilisé un jeu de donnée pour tester mon application.
+
+### Améliorations de Algorithme de Chiffrement
+
+On peut utiliser un autre algorithme de cryptage comme Twofish, DES, 3DES, AES, RSA, etc. pour améliorer la rapidité de chiffrement ou la sécurité du message. On va comparer les algorithmes de chiffrement pour le choix de l’algorithme en termes de la durée de chiffrement, la durée de déchiffrement et l’usage de mémoire.
+
+![Clipboard01](https://user-images.githubusercontent.com/83185578/148693192-a5d59476-be53-4ff6-8eb7-5fb427dade66.jpg)
+
+D’après le dessin 4, l'algorithme Blowfish enregistre la durée de cryptage le plus rapide et l'algorithme RSA enregistre la durée de cryptage le plus lent. Quant à la durée de décryptage pour tous les algorithmes est plus rapide que le temps de cryptage. De plus, l'algorithme Blowfish enregistre la durée de déchiffrement le plus rapide et l'algorithme RSA enregistre la durée de déchiffrement le plus lent.
+
+![Resim2](https://user-images.githubusercontent.com/83185578/148693209-b579c11d-84f6-4e32-89a2-5112ae66ae28.png)
+
+Selon le dessin, la mémoire utilisée pour les opérations unitaires pour toutes les techniques cryptographiques que nous avons étudiées. Blowfish a consommé moins de stockage de mémoire que les autres types, tandis que RSA utilise la mémoire la plus élevée.
+
+![Resim3](https://user-images.githubusercontent.com/83185578/148693224-fbec173d-ebf0-457c-841e-aa4730e3869a.png)
+
+Quant au dessin 6, les comparaisons de temps entre Twofish et Blowfish nous montrent que Twofish prend moins de temps pour crypter le document que Blowfish.
 
 ## _Ressources_
 
